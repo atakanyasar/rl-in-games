@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CubeBehaviourScript : MonoBehaviour
+public class CubeControllerScript : MonoBehaviour
 {   
+    public float AirFriction = 0.002f;
+
     public float ForwardMovementSpeed = 0;
     public float SideMovementSpeed = 0;
     public float VerticalMovementSpeed = 0;
@@ -13,8 +15,8 @@ public class CubeBehaviourScript : MonoBehaviour
     public float YawRotationSpeed = 0;
     public float PitchRotationSpeed = 0;
     public float RollRotationSpeed = 0;
-    public float RotationSpeedDelta = 0.1f;
-    public float MaxRotationSpeed = 20.0f;
+    public float RotationSpeedDelta = 0.25f;
+    public float MaxRotationSpeed = 50.0f;
 
     private Dictionary<string, KeyCode> movementKeyBindings = new Dictionary<string, KeyCode>()
     {
@@ -88,6 +90,14 @@ public class CubeBehaviourScript : MonoBehaviour
             }
         }
 
+        ForwardMovementSpeed = Mathf.Lerp(ForwardMovementSpeed, 0, AirFriction);
+        SideMovementSpeed = Mathf.Lerp(SideMovementSpeed, 0, AirFriction);
+        VerticalMovementSpeed = Mathf.Lerp(VerticalMovementSpeed, 0, AirFriction);
+        YawRotationSpeed = Mathf.Lerp(YawRotationSpeed, 0, AirFriction);
+        PitchRotationSpeed = Mathf.Lerp(PitchRotationSpeed, 0, AirFriction);
+        RollRotationSpeed = Mathf.Lerp(RollRotationSpeed, 0, AirFriction);
+
+
         ForwardMovementSpeed = Mathf.Clamp(ForwardMovementSpeed, -MaxSpeed, MaxSpeed);
         SideMovementSpeed = Mathf.Clamp(SideMovementSpeed, -MaxSpeed, MaxSpeed);
         VerticalMovementSpeed = Mathf.Clamp(VerticalMovementSpeed, -MaxSpeed, MaxSpeed);
@@ -102,9 +112,9 @@ public class CubeBehaviourScript : MonoBehaviour
         transform.Translate(transform.right * SideMovementSpeed * time, Space.World);
         transform.Translate(transform.up * VerticalMovementSpeed * time, Space.World);
 
-        transform.Rotate(transform.up, YawRotationSpeed * time, Space.Self);
-        transform.Rotate(transform.right, PitchRotationSpeed * time, Space.Self);
-        transform.Rotate(transform.forward, RollRotationSpeed * time, Space.Self);
+        transform.Rotate(transform.up, YawRotationSpeed * time, Space.World);
+        transform.Rotate(transform.right, PitchRotationSpeed * time, Space.World);
+        transform.Rotate(transform.forward, RollRotationSpeed * time, Space.World);
 
     }
 }

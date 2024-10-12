@@ -105,7 +105,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-9030074071930028429
 MonoBehaviour:
@@ -119,9 +119,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510d60d1f784c6e419672f57b920d763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AirFriction: 0.1
   ForwardMovementSpeed: 0
   SideMovementSpeed: 0
   VerticalMovementSpeed: 0
+  SpeedDelta: 0.02
+  MaxSpeed: 5
+  YawRotationSpeed: 0
+  PitchRotationSpeed: 0
+  RollRotationSpeed: 0
+  RotationSpeedDelta: 0.1
+  MaxRotationSpeed: 20
 --- !u!1 &5769906708731223138
 GameObject:
   m_ObjectHideFlags: 0
