@@ -15,8 +15,10 @@ public class CubeControllerScript : MonoBehaviour
     public float YawRotationSpeed = 0;
     public float PitchRotationSpeed = 0;
     public float RollRotationSpeed = 0;
-    public float RotationSpeedDelta = 0.25f;
-    public float MaxRotationSpeed = 50.0f;
+    public float RotationSpeedDelta = 0.5f;
+    public float MaxRotationSpeed = 90.0f;
+
+    public Rigidbody rb;
 
     private Dictionary<string, KeyCode> movementKeyBindings = new Dictionary<string, KeyCode>()
     {
@@ -37,7 +39,7 @@ public class CubeControllerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -106,15 +108,8 @@ public class CubeControllerScript : MonoBehaviour
         PitchRotationSpeed = Mathf.Clamp(PitchRotationSpeed, -MaxRotationSpeed, MaxRotationSpeed);
         RollRotationSpeed = Mathf.Clamp(RollRotationSpeed, -MaxRotationSpeed, MaxRotationSpeed);
 
-        float time = Time.deltaTime; 
-        
-        transform.Translate(transform.forward * ForwardMovementSpeed * time, Space.World);
-        transform.Translate(transform.right * SideMovementSpeed * time, Space.World);
-        transform.Translate(transform.up * VerticalMovementSpeed * time, Space.World);
-
-        transform.Rotate(transform.up, YawRotationSpeed * time, Space.World);
-        transform.Rotate(transform.right, PitchRotationSpeed * time, Space.World);
-        transform.Rotate(transform.forward, RollRotationSpeed * time, Space.World);
+        rb.velocity = transform.forward * ForwardMovementSpeed + transform.right * SideMovementSpeed + transform.up * VerticalMovementSpeed;
+        rb.angularVelocity = transform.localRotation * new Vector3(PitchRotationSpeed, YawRotationSpeed, RollRotationSpeed) * Mathf.Deg2Rad;
 
     }
 }
