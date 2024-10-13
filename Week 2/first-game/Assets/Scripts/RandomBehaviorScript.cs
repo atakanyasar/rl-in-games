@@ -1,24 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class RandomBehaviorScript : MonoBehaviour
 {   
 
-    public float Speed = 0.5f;
+    public float Speed = 1f;
     public Vector3 TargetPosition;
+    private float BorderLength;
 
-    // Start is called before the first frame update
     void Start()
     {
-        TargetPosition = new Vector3(Random.Range(0f, 10f), Random.Range(0f, 10f), Random.Range(0f, 10f));   
+        BorderLength = GetComponentInParent<CollectibleScript>().BorderLength;
+        
+        TargetPosition = new(Random.Range(-BorderLength, BorderLength), Random.Range(-BorderLength, BorderLength), Random.Range(-BorderLength, BorderLength));   
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Vector3.Distance(transform.position, TargetPosition) < 0.1f) {
-            TargetPosition = new Vector3(Random.Range(0f, 10f), Random.Range(0f, 10f), Random.Range(0f, 10f));
+            TargetPosition = new(Random.Range(-BorderLength, BorderLength), Random.Range(-BorderLength, BorderLength), Random.Range(-BorderLength, BorderLength)); 
         }
 
         transform.position = Vector3.MoveTowards(transform.position, TargetPosition, Speed * Time.deltaTime);
@@ -26,11 +29,12 @@ public class RandomBehaviorScript : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag != "Player") {
+        if (!other.gameObject.CompareTag("Player")) {
             return;
         }
         Destroy(gameObject);
         GetComponentInParent<CollectibleScript>().Collectibles.Remove(gameObject);
+        GetComponentInParent<CollectibleScript>().ScoreText.GetComponent<TextMeshProUGUI>().text = "Score: " + ++GetComponentInParent<CollectibleScript>().Score;
     }
 
 }
