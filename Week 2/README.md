@@ -1,4 +1,7 @@
 # Week 2
+
+https://github.com/user-attachments/assets/8b319eb3-fa0a-42ef-a732-8e222375fde4
+
 - Created a new simple Unity game including:
     - A keyboard controlled 3D player movement script with key W, A, S, D, Space and Left Shift, q, e, r, f, z, c.
     - Accleration and friction based player movement.
