@@ -1,0 +1,4 @@
+behaviors:
+    Cylinder:
+        summary_freq: 5000
+        max_steps: 1000000

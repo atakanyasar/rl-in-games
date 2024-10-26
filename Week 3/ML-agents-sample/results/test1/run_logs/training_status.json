@@ -1,0 +1,38 @@
+{
+    "Cylinder": {
+        "checkpoints": [
+            {
+                "steps": 499949,
+                "file_path": "results\\test1\\Cylinder\\Cylinder-499949.onnx",
+                "reward": 0.7939544864930212,
+                "creation_time": 1729939610.660273,
+                "auxillary_file_paths": [
+                    "results\\test1\\Cylinder\\Cylinder-499949.pt"
+                ]
+            },
+            {
+                "steps": 500077,
+                "file_path": "results\\test1\\Cylinder\\Cylinder-500077.onnx",
+                "reward": 0.7939544864930212,
+                "creation_time": 1729939610.7089343,
+                "auxillary_file_paths": [
+                    "results\\test1\\Cylinder\\Cylinder-500077.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500077,
+            "file_path": "results\\test1\\Cylinder.onnx",
+            "reward": 0.7939544864930212,
+            "creation_time": 1729939610.7089343,
+            "auxillary_file_paths": [
+                "results\\test1\\Cylinder\\Cylinder-500077.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.5.0+cpu"
+    }
+}

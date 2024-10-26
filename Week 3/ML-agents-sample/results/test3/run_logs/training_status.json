@@ -1,0 +1,47 @@
+{
+    "Cylinder": {
+        "checkpoints": [
+            {
+                "steps": 499979,
+                "file_path": "results\\test3\\Cylinder\\Cylinder-499979.onnx",
+                "reward": 0.9484284027420052,
+                "creation_time": 1729941476.304657,
+                "auxillary_file_paths": [
+                    "results\\test3\\Cylinder\\Cylinder-499979.pt"
+                ]
+            },
+            {
+                "steps": 999985,
+                "file_path": "results\\test3\\Cylinder\\Cylinder-999985.onnx",
+                "reward": 1.0121064743223955,
+                "creation_time": 1729941930.2433617,
+                "auxillary_file_paths": [
+                    "results\\test3\\Cylinder\\Cylinder-999985.pt"
+                ]
+            },
+            {
+                "steps": 1000004,
+                "file_path": "results\\test3\\Cylinder\\Cylinder-1000004.onnx",
+                "reward": 1.012239643904241,
+                "creation_time": 1729941930.2989414,
+                "auxillary_file_paths": [
+                    "results\\test3\\Cylinder\\Cylinder-1000004.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1000004,
+            "file_path": "results\\test3\\Cylinder.onnx",
+            "reward": 1.012239643904241,
+            "creation_time": 1729941930.2989414,
+            "auxillary_file_paths": [
+                "results\\test3\\Cylinder\\Cylinder-1000004.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.5.0+cpu"
+    }
+}
